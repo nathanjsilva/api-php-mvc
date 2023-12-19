@@ -1,0 +1,7 @@
+IndexIgnore .htaccess */.??* *~ *# */HEADER* */README* */_vti*
+RewriteEngine On 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
